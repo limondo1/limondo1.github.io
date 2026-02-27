@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher Forge Web</title>
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="logo">
+                    <span class="material-symbols-outlined icon-large">lock_person</span>
+                    <h1>Cipher Forge Web</h1>
+                </div>
+                <button id="theme-toggle" class="icon-btn theme-btn" title="テーマ切り替え">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div class="controls-panel card">
+                <div class="input-group">
+                    <label for="method-select">
+                        <span class="material-symbols-outlined">tune</span>
+                        暗号化方式
+                    </label>
+                    <div class="custom-select">
+                        <select id="method-select">
+                            <option value="A">Phantom Shift - 高速</option>
+                            <option value="B">Grid Matrix Scramble - 高セキュリティ</option>
+                            <option value="C">Noise Injection Shuffle - 最強</option>
+                        </select>
+                        <span class="material-symbols-outlined select-icon">expand_more</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password-input">
+                        <span class="material-symbols-outlined">key</span>
+                        マスターパスワード
+                    </label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password-input" placeholder="暗号化/復号化用のパスワードを入力">
+                        <button id="toggle-password" class="icon-btn" title="パスワードを表示">
+                            <span class="material-symbols-outlined">visibility</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="editor-panels">
+                <div class="panel card left-panel">
+                    <div class="panel-header">
+                        <h2>入力テキスト</h2>
+                        <button id="clear-input" class="icon-btn" title="クリア">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                    <textarea id="input-text" placeholder="ここにテキストを貼り付けてください..."></textarea>
+                    <div class="actions">
+                        <button id="btn-encrypt" class="btn primary">
+                            <span class="material-symbols-outlined">lock</span>
+                            暗号化
+                        </button>
+                        <button id="btn-decrypt" class="btn secondary">
+                            <span class="material-symbols-outlined">lock_open</span>
+                            復号化
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel card right-panel">
+                    <div class="panel-header">
+                        <h2>処理結果</h2>
+                        <button id="copy-result" class="icon-btn" title="クリップボードにコピー">
+                            <span class="material-symbols-outlined">content_copy</span>
+                        </button>
+                    </div>
+                    <textarea id="output-text" readonly placeholder="結果がここに表示されます..."></textarea>
+                    <div class="status-bar" id="status-bar">
+                        <span class="material-symbols-outlined status-icon">info</span>
+                        <span id="status-text">待機中</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./js/encryptionLogic.js"></script>
+    <script src="./js/renderer.js"></script>
+</body>
+
+</html>
