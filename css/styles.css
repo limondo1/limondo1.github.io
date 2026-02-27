@@ -1,0 +1,369 @@
+/* Base CSS Variables to handle Dark and Light Mode gracefully */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1e293b;
+    --card-bg: #f8fafc;
+    --card-border: #e2e8f0;
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --secondary-color: #64748b;
+    --secondary-hover: #475569;
+    --input-bg: #ffffff;
+    --input-border: #cbd5e1;
+    --input-focus: #3b82f6;
+    --error-color: #ef4444;
+    --success-color: #10b981;
+    --transition-speed: 0.3s;
+}
+
+/* Dark Mode Variables - Default System Preference */
+@media (prefers-color-scheme: dark) {
+    :root:not(.light-mode) {
+        --bg-color: #0f172a;
+        --text-color: #f8fafc;
+        --card-bg: #1e293b;
+        --card-border: #334155;
+        --primary-color: #3b82f6;
+        --primary-hover: #60a5fa;
+        --secondary-color: #475569;
+        --secondary-hover: #64748b;
+        --input-bg: #0f172a;
+        --input-border: #334155;
+        --input-focus: #3b82f6;
+    }
+}
+
+/* Explicit Manual Mode Overrides */
+.dark-mode {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --primary-color: #3b82f6;
+    --primary-hover: #60a5fa;
+    --secondary-color: #475569;
+    --secondary-hover: #64748b;
+    --input-bg: #0f172a;
+    --input-border: #334155;
+    --input-focus: #3b82f6;
+}
+
+.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #1e293b;
+    --card-bg: #f8fafc;
+    --card-border: #e2e8f0;
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --secondary-color: #64748b;
+    --secondary-hover: #475569;
+    --input-bg: #ffffff;
+    --input-border: #cbd5e1;
+    --input-focus: #3b82f6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Container */
+.container {
+    padding: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.header-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-large {
+    font-size: 40px;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+/* Main Layout */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: slideUp 0.5s ease-out 0.1s both;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+/* Controls Panel */
+.controls-panel {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.input-group {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+label .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--secondary-color);
+}
+
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Custom Select Wrapper */
+.custom-select {
+    position: relative;
+}
+
+.custom-select select {
+    appearance: none;
+    padding-right: 40px;
+}
+
+.select-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--secondary-color);
+}
+
+/* Password Wrapper */
+.password-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.password-wrapper .icon-btn {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Editor Panels */
+.editor-panels {
+    display: flex;
+    gap: 24px;
+}
+
+.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 200px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn.secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+.btn.secondary:hover {
+    background-color: var(--card-border);
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    background-color: var(--card-border);
+}
+
+/* Status Bar */
+.status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--secondary-color);
+}
+
+.status-success {
+    color: var(--success-color);
+}
+
+.status-error {
+    color: var(--error-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-panels {
+        flex-direction: column;
+    }
+}
